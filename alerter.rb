@@ -5,15 +5,17 @@ require 'json'
 require 'yaml'
 require 'net/smtp'
 
-kibana_host = "kibana.localdomain.com"
-
-
 APP_CONFIG = YAML.load_file('config.yml')
+kibana_host = APP_CONFIG['kibana_host']
+mail_from = APP_CONFIG['mail_from']
+mail_subject = APP_CONFIG['mail_subject']
+
+
 
 alerts = APP_CONFIG['alerts']
 
 def build_url(analyze_on, query_hash)
-  url = "http://kibana_host/api/analyze/" + analyze_on + "/trend/" + query_hash
+  url = "http://#{kibana_host}/api/analyze/" + analyze_on + "/trend/" + query_hash
   url
 end
 
@@ -23,14 +25,14 @@ def create_alerts(emails, data, limit=1)
     if k['count'] > limit
       #puts k['id'] + " is bigger than " + limit.to_s + " at " + k['count'].to_s
 message = <<MESSAGE_END
-From: kibana alert<kibana@domain.com>
+From: #{mail_from}
 To: #{email_string}
-Subject: Kibana Alert
+Subject: #{mail_subject}
 
 #{k['id']} is bigger than #{limit} at #{k['count']}.
 MESSAGE_END
       Net::SMTP.start('localhost') do |smtp|
-        smtp.send_message message, 'kibana@domain.com', emails
+        smtp.send_message message, mail_from, emails
       end
     end
   end

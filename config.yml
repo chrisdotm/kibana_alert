@@ -1,3 +1,6 @@
+kibana_host:kiba.host.com
+mail_from: Kibana Alerts <kibana@domain.com>
+mail_subject: Kibana Alerts
 alerts:
   messagealert2:
     emails:
