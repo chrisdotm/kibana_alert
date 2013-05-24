@@ -1,0 +1,9 @@
+alerts:
+  messagealert2:
+    emails:
+      - someone@domain.com
+    field: @message
+    query: eyJzZWFyY2giOiJAdHlwZTpnZWxmIEFORCAoQGZpZWxkcy5zaG9ydF9tZXNzYWdlOlwiNTAwIEVSUk9SX0xPR19NRVNTQUdFXCIgT1IgQGZpZWxkcy5zaG9ydF9tZXNzYWdlOlwiNjUwIEVSUk9SX0xPR19NRVNTQUdFXCIpIiwiZmllbGRzIjpbXSwib2Zmc2V0IjowLCJ0aW1lZnJhbWUiOiIxODAiLCJncmFwaG1vZGUiOiJjb3VudCIsInRpbWUiOnsidXNlcl9pbnRlcnZhbCI6MH0sInN0YW1wIjoxMzY5NDEzNzY4MjY1LCJtb2RlIjoiIiwiYW5hbHl6ZV9maWVsZCI6IiJ9
+    limit: 10
+
+
